@@ -1,0 +1,43 @@
+page {
+  background: #b3d4db;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+} 
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 50px;
+  font-size: 16px;
+  color: #333;
+}
+
+.sign {
+  margin-top: 100px;
+  width: 160px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  color: #ed28e1;
+  border-radius: 5px;
+  background: rgba(153,153,153,0.5);
+}
