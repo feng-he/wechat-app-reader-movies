@@ -5,12 +5,7 @@ Page({
     motto: 'Hello, ',
     userInfo: {}
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.redirectTo({
-      url: '../posts/posts'
-    })
-  },
+  
   onLoad: function () {
     console.log('onLoad')
     var that = this
@@ -21,5 +16,12 @@ Page({
         userInfo: userInfo
       })
     })
-  }
+  },
+
+  //事件处理函数
+  onEnterTap: function () {
+    wx.switchTab({
+      url: '/pages/posts/posts',
+    });
+  },
 })

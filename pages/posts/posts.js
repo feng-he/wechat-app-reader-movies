@@ -7,12 +7,21 @@ Page({
       postList: postsData.postList
     })
   },
+
   onPostTap: function (event) {
     let postId = event.currentTarget.dataset.postId;
     wx.navigateTo({
-      url: 'post-detail/post-detail?id=' + postId,
+      url: 'post-detail/post-detail?id=' + postId
     });
   },
+
+  onSwiperTap: function (event) {
+    let postId = event.target.dataset.postId;
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id=' + postId
+    });
+  },
+
   onShareAppMessage: function () {
     // 用户点击右上角分享
     return {

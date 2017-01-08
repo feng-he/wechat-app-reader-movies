@@ -1,4 +1,4 @@
-<template name="postItem">
+<template name="post">
     <view class="post-container">
         <view class="post-author-date">
             <image class="post-author" src="{{avatar}}"></image>

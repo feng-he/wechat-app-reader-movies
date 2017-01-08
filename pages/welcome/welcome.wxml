@@ -6,7 +6,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}{{userInfo.nickName}}</text>
   </view>
-  <view class="sign" bindtap="bindViewTap">
-      <view style="display:inline-block;color: #e8eb14">当时明月在，</view>曾照彩云归
+  <view class="sign" catchtap="onEnterTap">
+     <text>开启微信小程序之旅</text>
   </view>
 </view>

@@ -1,0 +1,15 @@
+<import src="movie-list/movie-list.wxml" />
+<import src="movie-grid/movie-grid.wxml" />
+<view class="search">
+    <icon type="search" class="search-img" size="13" color="#405f80"></icon>
+    <input type="text" placeholder="星球大战外传：侠盗一号" placeholder-class="placeholder" bindfocus="onBindFocus" bindblur="onBindBlur" />
+    <image src="/images/icon/xx.png" class="xx-img" bindtap="onCancelTap" wx:if="{{searchShow}}"></image>
+</view>
+<view class="container" wx:if="{{!searchShow}}">
+    <template is="movie-list" data="{{...in_theaters}}" />
+    <template is="movie-list" data="{{...coming_soon}}" />
+    <template is="movie-list" data="{{...top250}}" />
+</view>
+<view class="search-result" wx:if="{{searchShow}}">
+    <template is="movie-grid" data="{{...searchResult}}" />    
+</view>

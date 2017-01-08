@@ -13,36 +13,58 @@ Page({
             postId: postId,
             postItem: postItem
         });
+        this.setCollectedStorage();
+        this.setMusicMonitor();
+    },
+
+    setCollectedStorage: function () {
         let postsCollected = wx.getStorageSync('posts_collected');
-        let collected = postsCollected[postId]
+        let id = this.data.postId;
+        let collected = postsCollected[id]
         if (postsCollected) {
             collected = collected ? collected : false;
             this.setData({
                 collected: collected
             });
-            postsCollected[postId] = collected;
+            postsCollected[id] = collected;
             wx.setStorageSync('posts_collected', postsCollected);
         } else {
             postsCollected = {};
-            postsCollected[postId] = false;
+            postsCollected[id] = false;
             wx.setStorageSync('posts_collected', postsCollected);
         }
-        this.setMusicMonitor();
     },
 
     setMusicMonitor: function () {
-        let _page = this;
+        let g_isPlaying = app.globalData.g_isPlaying;
+        let id = this.data.postId;
+        let currentPlaying = g_isPlaying[id];
+        if (currentPlaying) {
+            this.setData({
+                isPlaying: currentPlaying
+            });
+        }
+        let that = this;
         wx.onBackgroundAudioPlay(function () {
-            _page.setData({
+            that.setData({
                 isPlaying: true
             });
+            app.globalData.g_isPlaying[id] = true;
         })
         wx.onBackgroundAudioPause(function () {
-            _page.setData({
+            that.setData({
                 isPlaying: false
             });
+            app.globalData.g_isPlaying[id] = false;
+        });
+        wx.onBackgroundAudioStop(function() {
+          that.setData({
+              isPlaying: false
+          });
+          app.globalData.g_isPlaying[id] = false;
         })
     },
+    
     onCollectionTap: function () {
         let postsCollected = wx.getStorageSync('posts_collected');
         let collected = postsCollected[this.data.postId];
